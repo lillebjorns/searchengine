@@ -123,7 +123,8 @@ header h1 {
 
 .image {
     width: 100%;
-    
+    min-height: 210px;
+    max-height: 210px;
 }
 
 .image img {
