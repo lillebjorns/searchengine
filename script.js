@@ -28,7 +28,12 @@ function fetchImages() {
 
 function displayImages(images) {
   const imageGrid = document.getElementById('image-grid');
-  imageGrid.innerHTML = '';
+  const fragment = document.createDocumentFragment(); // Create a document fragment
+
+  // Clear the existing content of imageGrid
+  while (imageGrid.firstChild) {
+    imageGrid.removeChild(imageGrid.firstChild);
+  }
 
   images.forEach(image => {
     const imgElement = document.createElement('img');
