@@ -6,3 +6,21 @@ var API_KEY = '42113152-8e32ae93f4bbd907c64935223';
 	else
 	    console.log('No hits');
 	});
+    function fetchImage() {
+        const apiKey = '42113152-8e32ae93f4bbd907c64935223';
+        fetch('https://pixabay.com/api/?key=s', {
+          method: 'GET',
+          headers: {
+            'x-rapidapi-key': apiKey,
+            "x-rapidapi-host": "https://pixabay.com/"
+          }
+        })
+        .then((response) => response.blob())
+        .then((blob) => {
+          const imageUrl = URL.createObjectURL(blob);
+          const imageElement = document.createElement("img");
+          imageElement.src = imageUrl;
+          const container = document.getElementById("image-container");
+          container.appendChild(imageElement);
+        });
+      }
