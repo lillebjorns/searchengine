@@ -10,8 +10,10 @@
 <header><h1>Pixbay Image Search</h1></header>
 <body>
     <div class="topnav">
-        <input type="text" placeholder="Search for photos">
-        <a id="submitbutton" href="#submit">submit placeholder</a>
+        <form id="searchForm">
+            <input id="searchInput" type="text" placeholder="Search for photos">
+            <button type="submit">Submit</button>
+          </form>
          <div class="dropdown">
             <button class="dropbtn">Choose Colour</button>
             <div class="dropdown-content">
@@ -37,36 +39,9 @@
         <div class="image" id="image-container">
           
         </div>
-        <div class="image">
-            <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg" alt="tree">
-        </div>
-        <div class="image">
-            <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg" alt="tree">
-        </div>
-        <div class="image">
-            <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg" alt="tree">
-        </div>
-        <div class="image">
-            <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg" alt="tree">
-        </div>
-        <div class="image">
-            <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg" alt="tree">
-        </div>
-        <div class="image">
-            <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg" alt="tree">
-        </div>
-        <div class="image">
-            <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg" alt="tree">
-        </div>
-        <div class="image">
-            <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg" alt="tree">
-        </div>
-        <div class="image">
-            <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg" alt="tree">
-        </div>
         
         
       </div>
-
+      <button type="button" id="nextButton">Next</button>
 </body>
 </html>
