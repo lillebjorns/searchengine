@@ -1,20 +1,8 @@
-function fetchImage() {
-    const apiKey = 'YOUR_API_KEY';
-    fetch('https://any-anime.p.rapidapi.com/anime/img', {
-      method: 'GET',
-      headers: {
-        'x-rapidapi-key': apiKey,
-        "x-rapidapi-host": "any-anime.p.rapidapi.com"
-      }
-    })
-    .then((response) => response.blob())
-    .then((blob) => {
-      const imageUrl = URL.createObjectURL(blob);
-      const imageElement = document.createElement("img");
-      imageElement.src = imageUrl;
-      const container = document.getElementById("image-container");
-      container.appendChild(imageElement);
-    });
-  }
-  const button = document.getElementById('fetch-image-button');
-button.addEventListener('click', fetchImage);
+var API_KEY = '42113152-8e32ae93f4bbd907c64935223';
+	var URL = "https://pixabay.com/api/?key="+API_KEY+"&q="+encodeURIComponent('red roses');
+	$.getJSON(URL, function(data){
+	if (parseInt(data.totalHits) > 0)
+	    $.each(data.hits, function(i, hit){ console.log(hit.pageURL); });
+	else
+	    console.log('No hits');
+	});
