@@ -25,31 +25,36 @@ function fetchImages() {
     .catch(error => console.error('Error fetching images:', error));
 }
 
-
 function displayImages(images) {
   const imageGrid = document.getElementById('image-grid');
-  const fragment = document.createDocumentFragment(); // Create a document fragment
+  const fragment = document.createDocumentFragment();
 
-  // Clear the existing content of imageGrid
   while (imageGrid.firstChild) {
     imageGrid.removeChild(imageGrid.firstChild);
   }
 
   images.forEach(image => {
+    const imgContainer = document.createElement('div');
+    imgContainer.classList.add('image-container');
+
     const imgElement = document.createElement('img');
     imgElement.src = image.webformatURL;
     imgElement.alt = image.tags;
     imgElement.classList.add('image');
-    fragment.appendChild(imgElement);
+
+    const textElement = document.createElement('p');
+    textElement.innerHTML = `${image.tags}<br>Photographer: ${image.user}`;
+    textElement.innerHTML = `<span style="font-size: 18px;">${image.tags}</span><br><span style="font-size: 12px;">Photographer: ${image.user}</span>`;
+    imgContainer.appendChild(imgElement);
+    imgContainer.appendChild(textElement);
+    fragment.appendChild(imgContainer);
   });
 
   imageGrid.appendChild(fragment);
 
   availableColors = [...new Set(images.flatMap(image => image.tags.split(',')))];
-  updateColorDropdown();
 
 }
-
 
 document.getElementById('searchForm').addEventListener('submit', (event) => {
     event.preventDefault(); 
@@ -57,29 +62,22 @@ document.getElementById('searchForm').addEventListener('submit', (event) => {
     fetchImages();
 });
 
-
 document.querySelectorAll('.dropdown-content a').forEach(anchor => {
     anchor.addEventListener('click', function(event) {
       event.preventDefault(); 
-  
       
       const color = this.dataset.color || this.textContent.trim().toLowerCase();
       currentColor = color;
 
       document.getElementById('searchInput').placeholder = `Search for ${color} photos`;
       fetchImages();
-     
-      filterImagesByColor(color);
     });
   });
   
-
-
 document.getElementById('nextButton').addEventListener('click', () => {
   currentPage++;
   fetchImages();
 });
-attachDropdownListeners();
 
 
 document.getElementById('prevButton').addEventListener('click', () => { 
