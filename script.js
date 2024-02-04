@@ -43,8 +43,8 @@ function displayImages(images) {
     imgElement.classList.add('image');
 
     const textElement = document.createElement('p');
-    textElement.innerHTML = `${image.tags}<br>Photographer: ${image.user}`;
-    textElement.innerHTML = `<span style="font-size: 18px;">${image.tags}</span><br><span style="font-size: 12px;">Photographer: ${image.user}</span>`;
+    textElement.textContent = `${image.tags} Taken by : ${image.user}`;
+   
     imgContainer.appendChild(imgElement);
     imgContainer.appendChild(textElement);
     fragment.appendChild(imgContainer);
