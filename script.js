@@ -4,9 +4,9 @@ const API_URL = `https://pixabay.com/api/?key=${API_KEY}&per_page=10`;
 let currentPage = 1;
 let currentQuery = '';
 let currentColor = '';
+let availableColors = ['black', 'white', 'red', 'green', 'yellow', 'blue', 'brown', 'orange', 'pink', 'purple', 'grey'];
 
-
-async function fetchImages() {
+function fetchImages() {
   let url = `${API_URL}&page=${currentPage}`;
 
   if (currentQuery) {
@@ -16,10 +16,13 @@ async function fetchImages() {
   if (currentColor) {
     url += `&colors=${currentColor}`;
   }
-    const response = await fetch(url);
-    const data = await response.json();
-    displayImages(data.hits);
-   
+
+  fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      displayImages(data.hits);
+    })
+    .catch(error => console.error('Error fetching images:', error));
 }
 
 
@@ -37,8 +40,14 @@ function displayImages(images) {
     imgElement.src = image.webformatURL;
     imgElement.alt = image.tags;
     imgElement.classList.add('image');
-    imageGrid.appendChild(imgElement);
+    fragment.appendChild(imgElement);
   });
+
+  imageGrid.appendChild(fragment);
+
+  availableColors = [...new Set(images.flatMap(image => image.tags.split(',')))];
+  updateColorDropdown();
+
 }
 
 
@@ -55,31 +64,21 @@ document.querySelectorAll('.dropdown-content a').forEach(anchor => {
   
       
       const color = this.dataset.color || this.textContent.trim().toLowerCase();
-  
+      currentColor = color;
+
+      document.getElementById('searchInput').placeholder = `Search for ${color} photos`;
+      fetchImages();
      
       filterImagesByColor(color);
     });
   });
-  function filterImagesByColor(color) {
-    // You would implement the logic here to filter images based on the selected color
-    // For example, you might hide images that do not match the selected color
-
-    const images = document.querySelectorAll('.image');
-    images.forEach(image => {
-        const imageColor = getImageColor(image); // You need to define a function to get the color of the image
-        if (imageColor !== color) {
-            image.style.display = 'none'; // Hide images that do not match the selected color
-        } else {
-            image.style.display = 'block'; // Show images that match the selected color
-        }
-    });
-}
+  
 
 
 document.getElementById('nextButton').addEventListener('click', () => {
   currentPage++;
   fetchImages();
 });
-
+attachDropdownListeners();
 
 fetchImages();
