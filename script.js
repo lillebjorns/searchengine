@@ -63,7 +63,7 @@ function displayImages(images) {
   
   imageGrid.appendChild(fragment);
 
-  availableColors = [new Set(images.flatMap(image => image.tags.split(',')))];
+  
   const dropbtn = document.querySelector('.dropbtn');
 
 
@@ -97,7 +97,7 @@ function updateNavigationButtons() {
 document.getElementById('searchForm').addEventListener('submit', (event) => {
     event.preventDefault(); 
     currentQuery = document.getElementById('searchInput').value;
-  
+
     currentPage = 1;
     fetchImages();
 });
@@ -118,8 +118,9 @@ document.querySelectorAll('.dropdown-content a').forEach(anchor => {
   
 document.getElementById('nextButton').addEventListener('click', () => {
   currentPage++;
- 
-  fetchImages();
+  
+ fetchImages();
+  
 });
 
 
@@ -127,4 +128,5 @@ document.getElementById('prevButton').addEventListener('click', () => {
   currentPage--;
   fetchImages();
 });
+
 fetchImages();
