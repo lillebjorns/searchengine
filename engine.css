@@ -3,8 +3,14 @@
     margin: 0;
     padding: 0;
 }
+.image-tags {
+    font-size: 20px;
+}
 
-
+.image-user {
+    font-size: 16px;
+    font-weight: bold; 
+}
 
 header {
     text-align: center;

@@ -28,28 +28,41 @@ function fetchImages() {
 function displayImages(images) {
   const imageGrid = document.getElementById('image-grid');
   const fragment = document.createDocumentFragment();
-
+  
+  // Clear the existing content of the imageGrid
   while (imageGrid.firstChild) {
     imageGrid.removeChild(imageGrid.firstChild);
   }
-
+  
   images.forEach(image => {
     const imgContainer = document.createElement('div');
     imgContainer.classList.add('image-container');
-
+  
     const imgElement = document.createElement('img');
     imgElement.src = image.webformatURL;
     imgElement.alt = image.tags;
     imgElement.classList.add('image');
-
-    const textElement = document.createElement('p');
-    textElement.textContent = `${image.tags} Taken by : ${image.user}`;
-   
+  
+    // Create a <p> element for image tags
+    const tagsElement = document.createElement('p');
+    tagsElement.classList.add('image-tags'); //klass för styling
+    tagsElement.textContent = image.tags;
+  
+    // Create a <p> element for image user
+    const userElement = document.createElement('p');
+    userElement.classList.add('image-user'); //klass för styling
+    userElement.textContent = `Taken by: ${ image.user} `;
+  
+    
     imgContainer.appendChild(imgElement);
-    imgContainer.appendChild(textElement);
+    imgContainer.appendChild(tagsElement);
+    imgContainer.appendChild(userElement);
+  
+    // Append the imgContainer to the fragment
     fragment.appendChild(imgContainer);
   });
-
+  
+ 
   imageGrid.appendChild(fragment);
 
   availableColors = [...new Set(images.flatMap(image => image.tags.split(',')))];
