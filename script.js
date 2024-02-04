@@ -81,4 +81,9 @@ document.getElementById('nextButton').addEventListener('click', () => {
 });
 attachDropdownListeners();
 
+
+document.getElementById('prevButton').addEventListener('click', () => { 
+  currentPage--;
+  fetchImages();
+});
 fetchImages();

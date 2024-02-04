@@ -4,6 +4,8 @@
     padding: 0;
 }
 
+
+
 header {
     text-align: center;
     margin-top: 20px;
@@ -127,4 +129,10 @@ header h1 {
     max-width: 100%;
     height: auto;
     object-fit: cover; 
+}
+
+#pageButtons-grid {
+    display: grid;
+    grid-template-columns: auto auto; /* Two columns of equal width */
+    gap: 20px;
 }
