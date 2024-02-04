@@ -61,10 +61,20 @@ function displayImages(images) {
     fragment.appendChild(imgContainer);
   });
   
- 
   imageGrid.appendChild(fragment);
 
-  availableColors = [...new Set(images.flatMap(image => image.tags.split(',')))];
+  availableColors = [new Set(images.flatMap(image => image.tags.split(',')))];
+  const dropbtn = document.querySelector('.dropbtn');
+
+
+document.querySelectorAll('.dropdown-content a').forEach(anchor => {
+    anchor.addEventListener('click', function(event) {
+        event.preventDefault(); 
+
+        const color = this.textContent.trim();
+        dropbtn.textContent = color; 
+    });
+});
 
 }
 function updateNavigationButtons() {
@@ -87,6 +97,7 @@ function updateNavigationButtons() {
 document.getElementById('searchForm').addEventListener('submit', (event) => {
     event.preventDefault(); 
     currentQuery = document.getElementById('searchInput').value;
+  
     currentPage = 1;
     fetchImages();
 });
@@ -99,6 +110,7 @@ document.querySelectorAll('.dropdown-content a').forEach(anchor => {
       currentColor = color;
 
       document.getElementById('searchInput').placeholder = `Search for ${color} photos`;
+
       currentPage = 1;
       
     });
@@ -106,6 +118,7 @@ document.querySelectorAll('.dropdown-content a').forEach(anchor => {
   
 document.getElementById('nextButton').addEventListener('click', () => {
   currentPage++;
+ 
   fetchImages();
 });
 
