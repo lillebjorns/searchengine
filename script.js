@@ -6,6 +6,7 @@ let currentQuery = '';
 let currentColor = '';
 let selectedColor = ''; //ny variabel som får spara undan färgen tillsvidare
 let availableColors = ['','black', 'white', 'red', 'green', 'yellow', 'blue', 'brown', 'orange', 'pink', 'purple', 'grey'];
+fetchImages(); //hämtar bilder vid start
 
 async function fetchImages() {
   let url = `${API_URL}&page=${currentPage}`;
@@ -32,7 +33,7 @@ function displayImages(images) {
   
   // Clear the existing content of the imageGrid
   while (imageGrid.firstChild) {
-    imageGrid.removeChild(imageGrid.firstChild);
+    imageGrid.removeChild(imageGrid.firstChild); // utan detta är första platsen i gridet tom
   }
   
   images.forEach(image => {
@@ -40,40 +41,37 @@ function displayImages(images) {
     imgContainer.classList.add('image-container');
   
     const imgElement = document.createElement('img');
-    imgElement.src = image.webformatURL;
-    imgElement.alt = image.tags;
-    imgElement.classList.add('image');
+    imgElement.src = image.webformatURL; //bild
+    imgElement.alt = image.tags; //taggar
+    imgElement.classList.add('image'); //klass för styling
   
-    // Create a <p> element for image tags
+    
     const tagsElement = document.createElement('p');
     tagsElement.classList.add('image-tags'); //klass för styling
     tagsElement.textContent = image.tags;
   
-    // Create a <p> element for image user
+   
     const userElement = document.createElement('p');
     userElement.classList.add('image-user'); //klass för styling
     userElement.textContent = `Taken by: ${ image.user} `;
   
     
-    imgContainer.appendChild(imgElement);
-    imgContainer.appendChild(tagsElement);
-    imgContainer.appendChild(userElement);
+    imgContainer.appendChild(imgElement); //pusselbit 1
+    imgContainer.appendChild(tagsElement);//pusselbit 2
+    imgContainer.appendChild(userElement);//pusselbit 3
   
-    // Append the imgContainer to the fragment
-    fragment.appendChild(imgContainer);
+    
+    fragment.appendChild(imgContainer); //komplett pussel
   });
   
-  imageGrid.appendChild(fragment);
+  imageGrid.appendChild(fragment); //in med det på sidan
 
   
-  const dropbtn = document.querySelector('.dropbtn');
-
-
 document.querySelectorAll('.dropdown-content a').forEach(anchor => {
     anchor.addEventListener('click', function(event) {
-        event.preventDefault(); 
+        event.preventDefault(); //tydligen bra att ha med
 
-        const color = this.textContent.trim();
+        const color = this.textContent.trim(); //norpar färgen från vald dropdown
         dropbtn.textContent = color; 
     });
 });
@@ -119,9 +117,7 @@ document.querySelectorAll('.dropdown-content a').forEach(anchor => {
   
 document.getElementById('nextButton').addEventListener('click', () => {
   currentPage++;
-  
  fetchImages();
-  
 });
 
 
@@ -130,4 +126,3 @@ document.getElementById('prevButton').addEventListener('click', () => {
   fetchImages();
 });
 
-fetchImages();
