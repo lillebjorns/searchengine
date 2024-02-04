@@ -4,7 +4,7 @@ const API_URL = `https://pixabay.com/api/?key=${API_KEY}&per_page=10`;
 let currentPage = 1;
 let currentQuery = '';
 let currentColor = '';
-let availableColors = ['black', 'white', 'red', 'green', 'yellow', 'blue', 'brown', 'orange', 'pink', 'purple', 'grey'];
+let availableColors = ['','black', 'white', 'red', 'green', 'yellow', 'blue', 'brown', 'orange', 'pink', 'purple', 'grey'];
 
 async function fetchImages() {
   let url = `${API_URL}&page=${currentPage}`;
@@ -18,7 +18,7 @@ async function fetchImages() {
   }
     const response = await fetch(url); 
     const data = await response.json();
-    totalPages = Math.max(1, Math.ceil(data.totalHits / 10));
+    totalPages = Math.max(1,data.totalHits / 10);
     displayImages(data.hits);
     updateNavigationButtons();
 
@@ -87,6 +87,7 @@ function updateNavigationButtons() {
 document.getElementById('searchForm').addEventListener('submit', (event) => {
     event.preventDefault(); 
     currentQuery = document.getElementById('searchInput').value;
+    currentPage = 1;
     fetchImages();
 });
 
@@ -98,7 +99,8 @@ document.querySelectorAll('.dropdown-content a').forEach(anchor => {
       currentColor = color;
 
       document.getElementById('searchInput').placeholder = `Search for ${color} photos`;
-      fetchImages();
+      currentPage = 1;
+      
     });
   });
   
