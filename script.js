@@ -21,6 +21,7 @@ function fetchImages() {
     .then(response => response.json())
     .then(data => {
       displayImages(data.hits);
+      updateNavigationButtons();
     })
     .catch(error => console.error('Error fetching images:', error));
 }
@@ -67,6 +68,16 @@ function displayImages(images) {
 
   availableColors = [...new Set(images.flatMap(image => image.tags.split(',')))];
 
+}
+function updateNavigationButtons() {
+  const prevButton = document.getElementById('prevButton');
+  const nextButton = document.getElementById('nextButton');
+
+  if (currentPage === 1) {
+    prevButton.disabled = true;
+  } else {
+    prevButton.disabled = false;
+  }
 }
 
 document.getElementById('searchForm').addEventListener('submit', (event) => {
