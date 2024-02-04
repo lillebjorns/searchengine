@@ -4,25 +4,27 @@ const API_URL = `https://pixabay.com/api/?key=${API_KEY}&per_page=10`;
 let currentPage = 1;
 let currentQuery = '';
 let currentColor = '';
+let selectedColor = ''; //ny variabel som får spara undan färgen tillsvidare
 let availableColors = ['','black', 'white', 'red', 'green', 'yellow', 'blue', 'brown', 'orange', 'pink', 'purple', 'grey'];
 
 async function fetchImages() {
   let url = `${API_URL}&page=${currentPage}`;
 
   if (currentQuery) {
-    url += `&q=${encodeURIComponent(currentQuery)}`;
+      url += `&q=${encodeURIComponent(currentQuery)}`;
   }
 
   if (currentColor) {
-    url += `&colors=${currentColor}`;
+      url += `&colors=${currentColor}`; //currentcolor är tom tills submit trycks på
   }
-    const response = await fetch(url); 
-    const data = await response.json();
-    totalPages = Math.max(1,data.totalHits / 10);
-    displayImages(data.hits);
-    updateNavigationButtons();
 
-  }
+      const response = await fetch(url); 
+      const data = await response.json();
+      totalPages = Math.max(1, data.totalHits / 10);
+      displayImages(data.hits);
+      updateNavigationButtons();
+ 
+}
 
 function displayImages(images) {
   const imageGrid = document.getElementById('image-grid');
@@ -94,27 +96,26 @@ function updateNavigationButtons() {
   }
 }
 
-document.getElementById('searchForm').addEventListener('submit', (event) => {
-    event.preventDefault(); 
-    currentQuery = document.getElementById('searchInput').value;
+document.getElementById('searchForm').addEventListener('submit', async (event) => {
+  event.preventDefault(); 
+  currentQuery = document.getElementById('searchInput').value;
+  
+  currentColor = selectedColor;  // !!!först vid submit så sparas färgen i currentColor!!!
 
-    currentPage = 1;
-    fetchImages();
+  currentPage = 1;
+  await fetchImages(); 
 });
 
 document.querySelectorAll('.dropdown-content a').forEach(anchor => {
-    anchor.addEventListener('click', function(event) {
+  anchor.addEventListener('click', function(event) {
       event.preventDefault(); 
+    
       
-      const color = this.dataset.color || this.textContent.trim().toLowerCase();
-      currentColor = color;
-
-      document.getElementById('searchInput').placeholder = `Search for ${color} photos`;
-
-      currentPage = 1;
-      
-    });
+      selectedColor = this.dataset.color || this.textContent.trim().toLowerCase(); 
+     // ovan  lagras vald färg i selectedColor men används inte än
+      document.getElementById('searchInput').placeholder = `Search for ${selectedColor} photos`; 
   });
+});
   
 document.getElementById('nextButton').addEventListener('click', () => {
   currentPage++;
