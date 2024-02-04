@@ -6,7 +6,7 @@ let currentQuery = '';
 let currentColor = '';
 
 
-function fetchImages() {
+async function fetchImages() {
   let url = `${API_URL}&page=${currentPage}`;
 
   if (currentQuery) {
@@ -16,13 +16,10 @@ function fetchImages() {
   if (currentColor) {
     url += `&colors=${currentColor}`;
   }
-
-  fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      displayImages(data.hits);
-    })
-    .catch(error => console.error('Error fetching images:', error));
+    const response = await fetch(url);
+    const data = await response.json();
+    displayImages(data.hits);
+   
 }
 
 
@@ -63,7 +60,20 @@ document.querySelectorAll('.dropdown-content a').forEach(anchor => {
       filterImagesByColor(color);
     });
   });
-  
+  function filterImagesByColor(color) {
+    // You would implement the logic here to filter images based on the selected color
+    // For example, you might hide images that do not match the selected color
+
+    const images = document.querySelectorAll('.image');
+    images.forEach(image => {
+        const imageColor = getImageColor(image); // You need to define a function to get the color of the image
+        if (imageColor !== color) {
+            image.style.display = 'none'; // Hide images that do not match the selected color
+        } else {
+            image.style.display = 'block'; // Show images that match the selected color
+        }
+    });
+}
 
 
 document.getElementById('nextButton').addEventListener('click', () => {
