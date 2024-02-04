@@ -6,7 +6,7 @@ let currentQuery = '';
 let currentColor = '';
 let availableColors = ['black', 'white', 'red', 'green', 'yellow', 'blue', 'brown', 'orange', 'pink', 'purple', 'grey'];
 
-function fetchImages() {
+async function fetchImages() {
   let url = `${API_URL}&page=${currentPage}`;
 
   if (currentQuery) {
@@ -17,14 +17,14 @@ function fetchImages() {
     url += `&colors=${currentColor}`;
   }
 
-  fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      displayImages(data.hits);
-      updateNavigationButtons();
-    })
-    .catch(error => console.error('Error fetching images:', error));
-}
+  
+    const response = await fetch(url); // Insert await here
+    const data = await response.json();
+    displayImages(data.hits);
+    updateNavigationButtons();
+   
+  }
+
 
 function displayImages(images) {
   const imageGrid = document.getElementById('image-grid');
