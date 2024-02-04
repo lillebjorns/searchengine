@@ -16,15 +16,13 @@ async function fetchImages() {
   if (currentColor) {
     url += `&colors=${currentColor}`;
   }
-
-  
-    const response = await fetch(url); // Insert await here
+    const response = await fetch(url); 
     const data = await response.json();
+    totalPages = Math.max(1, Math.ceil(data.totalHits / 10));
     displayImages(data.hits);
     updateNavigationButtons();
-   
-  }
 
+  }
 
 function displayImages(images) {
   const imageGrid = document.getElementById('image-grid');
@@ -77,6 +75,12 @@ function updateNavigationButtons() {
     prevButton.disabled = true;
   } else {
     prevButton.disabled = false;
+  }
+
+  if (currentPage >= totalPages) {
+    nextButton.disabled = true;
+  } else {
+    nextButton.disabled = false;
   }
 }
 
