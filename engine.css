@@ -32,7 +32,9 @@ button {
     font-style: oblique;
     font-family:Georgia, 'Times New Roman', Times, serif;
 }
-
+#searchInput {
+    padding: 14px 16px;
+}
 
 .topnav {
     display: flex;
@@ -73,6 +75,7 @@ button {
     padding: 16px;
     font-size: 16px;
     border: none;
+    min-width: 102px;
 }
 .dropbtn::before { /* lägger till en nedåtpil i dropdown*/
     content: "˅";
