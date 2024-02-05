@@ -72,9 +72,10 @@ document.querySelectorAll('.dropdown-content a').forEach(anchor => {
         event.preventDefault(); //tydligen bra att ha med
 
         const color = this.textContent.trim(); //norpar färgen från vald dropdown
-        dropbtn.textContent = color; 
+        document.querySelector('.dropbtn').textContent = `${color}`;
     });
 });
+
 
 }
 function updateNavigationButtons() {

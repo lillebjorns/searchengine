@@ -11,6 +11,10 @@
     font-size: 16px;
     font-weight: bold; 
 }
+html {
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-style: oblique;
+}
 
 header {
     text-align: center;
@@ -20,7 +24,6 @@ header {
 
 header h1 {
     font-size: 50px;
-    font-style: oblique;
     text-shadow: 2px 2px 2px rgb(90, 89, 89);
 }
 
@@ -56,12 +59,25 @@ header h1 {
     font-size: 17px;
 }
 
+button {
+    padding: 12 px 16px;
+    border: none;
+    cursor: pointer;
+}
+
 .dropbtn {
-    background-color: #04AA6D;
-    color: white;
+    background-color:white;
+    color:black;
     padding: 16px;
     font-size: 16px;
     border: none;
+}
+.dropbtn::before {
+    content: "˅";
+    position: absolute;
+    right: 2px; 
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .dropdown {
@@ -94,7 +110,7 @@ header h1 {
 }
 
 .dropdown:hover .dropbtn {
-    background-color: #62ce65;
+    background-color: white;
 }
 
 
