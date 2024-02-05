@@ -26,26 +26,28 @@ header h1 {
     font-size: 50px;
     text-shadow: 2px 2px 2px rgb(90, 89, 89);
 }
-button {
-    padding: 16px;
-    font-family:Georgia, 'Times New Roman', Times, serif;
+button,
+input[type="submit"],
+.dropdown-content a,
+.topnav input[type="text"] {
+    padding: 14px 16px;
+    font-size: 16px;
     font-style: oblique;
-
+    font-family:Georgia, 'Times New Roman', Times, serif;
 }
+
 
 .topnav {
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: #dcdcdc; 
-    padding: 20px;
     margin-inline-start: 5vw;
     margin-inline-end:5vw;
     border-radius: 10px;    
+    padding: 14px 16px;
 }
-.topnav {
-    padding: 14 px 16px;
-}
+
 
 .topnav a {
     color: black;
@@ -62,7 +64,7 @@ button {
 
 .topnav input[type=text] {
     padding: 6px;
-    border: solid color gray;
+    border: 1px solid color gray;
     margin-top: 8px;
     margin-right: 16px;
     font-size: 17px;
