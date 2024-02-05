@@ -5,7 +5,7 @@ let currentPage = 1;
 let currentQuery = '';
 let currentColor = '';
 let selectedColor = ''; //ny variabel som får spara undan färgen tillsvidare
-let availableColors = ['','black', 'white', 'red', 'green', 'yellow', 'blue', 'brown', 'orange', 'pink', 'purple', 'grey'];
+
 fetchImages(); //hämtar bilder vid start
 
 async function fetchImages() {
@@ -71,7 +71,7 @@ document.querySelectorAll('.dropdown-content a').forEach(anchor => {
     anchor.addEventListener('click', function(event) {
         event.preventDefault(); //tydligen bra att ha med
 
-        const color = this.textContent.trim(); //norpar färgen från vald dropdown
+        const color = this.textContent.trim().toLowerCase(); //norpar färgen från vald dropdown
         document.querySelector('.dropbtn').textContent = `${color}`;
     });
 });
