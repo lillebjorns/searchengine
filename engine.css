@@ -26,6 +26,12 @@ header h1 {
     font-size: 50px;
     text-shadow: 2px 2px 2px rgb(90, 89, 89);
 }
+button {
+    padding: 16px;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-style: oblique;
+
+}
 
 .topnav {
     display: flex;
@@ -36,6 +42,9 @@ header h1 {
     margin-inline-start: 5vw;
     margin-inline-end:5vw;
     border-radius: 10px;    
+}
+.topnav {
+    padding: 14 px 16px;
 }
 
 .topnav a {
@@ -59,12 +68,6 @@ header h1 {
     font-size: 17px;
 }
 
-button {
-    padding: 12 px 16px;
-    border: none;
-    cursor: pointer;
-}
-
 .dropbtn {
     background-color:white;
     color:black;
@@ -72,7 +75,7 @@ button {
     font-size: 16px;
     border: none;
 }
-.dropbtn::before {
+.dropbtn::before { /* lägger till en nedåtpil i dropdown*/
     content: "˅";
     position: absolute;
     right: 2px; 
