@@ -1,6 +1,6 @@
 var API_KEY = '42113152-8e32ae93f4bbd907c64935223';
 const API_URL = `https://pixabay.com/api/?key=${API_KEY}&per_page=10`;
-
+let imgid =1;
 let currentPage = 1;
 let currentQuery = '';
 let currentColor = '';
@@ -44,7 +44,7 @@ function displayImages(images) {
     imgElement.src = image.webformatURL; //bild
     imgElement.alt = image.tags; //taggar
     imgElement.classList.add('image'); //klass för styling
-  
+    
     
     const tagsElement = document.createElement('p');
     tagsElement.classList.add('image-tags'); //klass för styling

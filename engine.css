@@ -11,9 +11,11 @@
     font-size: 16px;
     font-weight: bold; 
 }
-html {
+html{
+    
     font-family:Georgia, 'Times New Roman', Times, serif;
     font-style: oblique;
+    
 }
 
 header {
@@ -154,6 +156,8 @@ button:not([disabled]):hover {
     padding: 20px;
     max-width: calc(200px * 4 + 60px); 
     margin: 0 auto;
+    min-height: 100vh;
+    
 }
 
 .image {
@@ -175,5 +179,10 @@ button:not([disabled]):hover {
     margin-top: auto;
     margin-inline-start:5vw;
     margin-inline-end:5vw;
-    
+
 }
+
+
+
+
+
