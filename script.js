@@ -109,12 +109,10 @@ document.getElementById('searchForm').addEventListener('submit', async (event) =
 
 document.querySelectorAll('.dropdown-content a').forEach(anchor => {
   anchor.addEventListener('click', function(event) {
-      event.preventDefault(); 
-    
-      
-      selectedColor = this.dataset.color || this.textContent.trim().toLowerCase(); 
-     // ovan  lagras vald färg i selectedColor men används inte än
-      document.getElementById('searchInput').placeholder = `Search for ${selectedColor} photos`; 
+    event.preventDefault();
+
+    selectedColor = this.dataset.color || this.textContent.trim().toLowerCase();
+    document.querySelector('.dropbtn').textContent = selectedColor;
   });
 });
   

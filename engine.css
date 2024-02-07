@@ -91,7 +91,7 @@ button:not([disabled]):hover {
     padding: 16px;
     font-size: 16px;
     border: none;
-    min-width: 102px;
+    min-width: 140px;
     border-radius: 1px;
 }
 .dropbtn::before { /* lägger till en nedåtpil i dropdown*/
