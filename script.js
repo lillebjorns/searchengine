@@ -8,7 +8,6 @@ let selectedColor = ''; //ny variabel som får spara undan färgen tillsvidare
 prevButton.disabled = true;
 nextButton.disabled = true;
 
-
 async function fetchImages() {
   let url = `${API_URL}&page=${currentPage}`;
 
@@ -25,7 +24,6 @@ async function fetchImages() {
   totalPages = Math.max(1, data.totalHits / 12);
   displayImages(data.hits);
   updateNavigationButtons();
-
 }
 
 function displayImages(images) {
@@ -40,33 +38,27 @@ function displayImages(images) {
     const imgContainer = document.createElement('div');
     imgContainer.classList.add('image');
 
-
     const imgElement = document.createElement('img');
     imgElement.src = image.webformatURL; //bild
     imgElement.alt = image.tags; //taggar
     imgElement.classList.add('image'); //klass för styling
 
-
     const tagsElement = document.createElement('p');
     tagsElement.classList.add('image-tags'); //klass för styling
     tagsElement.textContent = image.tags;
-
 
     const userElement = document.createElement('p');
     userElement.classList.add('image-user'); //klass för styling
     userElement.textContent = `Taken by: ${image.user} `;
 
-
     imgContainer.appendChild(imgElement); //pusselbit 1
     imgContainer.appendChild(tagsElement);//pusselbit 2
     imgContainer.appendChild(userElement);//pusselbit 3
-
 
     fragment.appendChild(imgContainer); //komplett pussel
   });
 
   imageGrid.appendChild(fragment); //in med det på sidan
-
 
   document.querySelectorAll('.dropdown-content a').forEach(anchor => {
     anchor.addEventListener('click', function (event) {
@@ -77,12 +69,10 @@ function displayImages(images) {
     });
   });
 
-
 }
 function updateNavigationButtons() {
   const prevButton = document.getElementById('prevButton');
   const nextButton = document.getElementById('nextButton');
-
 
   if (currentPage === 1) {
     prevButton.disabled = true;
@@ -122,10 +112,8 @@ document.getElementById('nextButton').addEventListener('click', () => {
   fetchImages();
 });
 
-
 document.getElementById('prevButton').addEventListener('click', () => {
 
   currentPage--;
   fetchImages();
 });
-

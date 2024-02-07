@@ -23,7 +23,6 @@ body {
     background-image: url("backgroundimgweb.jpg");
     background-repeat: no-repeat, repeat;
     background-size: cover;
-
 }
 
 header {
@@ -70,7 +69,6 @@ button:not([disabled]):hover {
     margin-inline-end: 5vw;
     border-radius: 10px;
     padding: 16px 16px;
-
 }
 
 .topnav a {
@@ -108,7 +106,6 @@ button:not([disabled]):hover {
     right: 2px;
     top: 50%;
     transform: translateY(-50%);
-
 }
 
 .dropdown {
@@ -144,8 +141,7 @@ button:not([disabled]):hover {
     background-color: white;
 }
 
-
-@media screen and (max-width: 680px) {
+@media screen and (max-width: 685px) {
     .topnav {
         flex-direction: column;
         align-items: center;
@@ -175,7 +171,6 @@ button:not([disabled]):hover {
     min-height: 100vh;  /* så att knapparna stannar under*/
   
 }
-
 
 .image {
     width: 100%;

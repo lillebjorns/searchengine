@@ -1,59 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bildsökmotor</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="engine.css">
-  <script src="script.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bildsökmotor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="engine.css">
+    <script src="script.js" defer></script>
 </head>
-
 <body>
-  <header>
-    <h1>Pixbay Image Search</h1>
-  </header>
-  <div class="topnav">
-    <form id="searchForm">
-      <input id="searchInput" type="text" placeholder="Search for photos">
+<header><h1>Wolfpack Image Hunter</h1></header>
+    <div class="topnav">
+        <form id="searchForm">
+            <input id="searchInput" type="text" placeholder="Search for photos">
+           
+         <div class="dropdown">
+            <button placeholder="" class="dropbtn">Choose Colour</button>
+            <div class="dropdown-content">
+            <a href="#">Any color</a>
+              <a href="#" >Black</a>
+              <a href="#">White</a>
+              <a href="#">Red</a>
+              <a href="#">Green</a>
+              <a href="#">Yellow</a>
+              <a href="#">Blue</a>
+              <a href="#">Brown</a>
+              <a href="#">Orange</a>
+              <a href="#">Pink</a>
+              <a href="#">Lilac</a>
+              <a href="#">Gray</a>
+            </div>
+          </div> 
+       
+          <button type="submit" id="submitButton">Submit</button>
+        </form>
+      </div> 
 
-      <div class="dropdown">
-        <button placeholder="" class="dropbtn">Choose Colour</button>
-        <div class="dropdown-content">
-          <a href="#">Any color</a>
-          <a href="#">Black</a>
-          <a href="#">White</a>
-          <a href="#">Red</a>
-          <a href="#">Green</a>
-          <a href="#">Yellow</a>
-          <a href="#">Blue</a>
-          <a href="#">Brown</a>
-          <a href="#">Orange</a>
-          <a href="#">Pink</a>
-          <a href="#">Lilac</a>
-          <a href="#">Gray</a>
+      <div id = "image-grid">
+        <div class="image" id="image-container">
         </div>
       </div>
 
-      <button type="submit" id="submitButton">Submit</button>
-    </form>
-  </div>
-
-  <div id="image-grid">
-    <div class="image" id="image-container">
-    </div>
-  </div>
-
-  <div id="pageButtons-grid">
-    <button class="navigationButton" type="button" id="prevButton">Previous Page</button>
-    <button class="navigationButton" type="button" id="nextButton">Next Page</button>
-  </div>
-
-
+      <footer>
+        <div id="pageButtons-grid">
+          <button class="navigationButton" type="button" id="prevButton">Previous Page</button>
+          <button class="navigationButton" type="button" id="nextButton" >Next Page</button>
+        </div>
+      </footer>
 </body>
-
 </html>
